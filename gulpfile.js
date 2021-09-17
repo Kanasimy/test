@@ -14,7 +14,7 @@ const   gulp = require('gulp'),
 
 const paths = {
     sass:['src/sass/*.scss'],
-    css:['build/css'],
+    css:['docs/css'],
     html:['src/*.html'],
     template:['src/pages/*.pug'],
     img:['src/img/*']
@@ -23,7 +23,7 @@ const paths = {
 //конфигурация сервера
 const config = {
     server: {
-        baseDir: "build/"
+        baseDir: "docs/"
     },
     tunnel: false,
     browser: 'chrome',
@@ -54,7 +54,7 @@ const html = () => {
         .pipe(plumber())
         .pipe(pugLinter({ reporter: 'default' }))
         .pipe(pug())
-        .pipe(gulp.dest('build'))
+        .pipe(gulp.dest('docs'))
 }
 
 exports.html = html;
@@ -62,7 +62,7 @@ exports.html = html;
 const img = (done) => {
     gulp.src(paths.img)
         .pipe(imagemin())
-        .pipe(gulp.dest('build/img'))
+        .pipe(gulp.dest('docs/img'))
     done()
 }
 
@@ -70,7 +70,7 @@ exports.img = img;
 
 const copyImg = (done) => {
     gulp.src(paths.img)
-        .pipe(gulp.dest('build/img'));
+        .pipe(gulp.dest('docs/img'));
     done();
 }
 
@@ -79,7 +79,7 @@ exports.copyImg = copyImg;
 const webpImg = () => {
     return gulp.src("src/img/**/*.{jpg,png}")
         .pipe(webp({quality: 90}))
-        .pipe(gulp.dest("build/img"))
+        .pipe(gulp.dest("docs/img"))
 }
 
 exports.webpImg = webpImg;
@@ -90,7 +90,7 @@ const sprite = () => {
             inLineSvg: true
         }))
         .pipe(rename("sprite.svg"))
-        .pipe(gulp.dest("build/img"));
+        .pipe(gulp.dest("docs/img"));
 }
 
 exports.sprite = sprite;
@@ -109,16 +109,16 @@ exports.css = css;
 
 const copyScript = (done) => {
     gulp.src("src/js/*")
-        .pipe(gulp.dest('build/js'));
+        .pipe(gulp.dest('docs/js'));
     done();
 }
 
 exports.copyScript = copyScript;
 
-// Clean build
+// Clean docs
 
 const cleanBuild = (done) => {
-    return gulp.src("./build", {read: false, allowEmpty: true})
+    return gulp.src("./docs", {read: false, allowEmpty: true})
         .pipe(clean());
         done();
 };
