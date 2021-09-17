@@ -1,0 +1,46 @@
+extends common/template
+block content
+    main.main
+        h1 С этим товаром покупают
+        ul.product__list
+            block product
+            include includes/product
+                +product(
+                    '/img/product-1.jpg',
+                    '/img/product-1.webp',
+                    '189 ₽',
+                    '',
+                    '#',
+                    'Oral-B ополаскиватель для полости рта Комплекс LASTING FRESHNESS Arctic Mint 250 мл',
+                    ''
+                )
+
+                +product(
+                    '/img/product-2.jpg',
+                    '/img/product-2.webp',
+                    '801 ₽',
+                    '',
+                    '#',
+                    'Сменные насадки для электрических зубных щеток Oral-B Sensi Ultrathin для бережной чистки, 2 шт.',
+                    ''
+                )
+
+                +product(
+                    '/img/product-3.jpg',
+                    '/img/product-3.webp',
+                    '2289 ₽',
+                    '',
+                    '#',
+                    'Электрическая зубная щетка Philips Sonicare 2 Series Gum Health HX6232/20 с двумя насадками, черный',
+                    ''
+                )
+
+                +product(
+                    '/img/product-4.jpg',
+                    '/img/product-4.webp',
+                    '385 ₽',
+                    '540 ₽',
+                    '#',
+                    'Oral-B Зубная нить Essential Floss вощеная, мята, 2шт',
+                    'discount'
+                )

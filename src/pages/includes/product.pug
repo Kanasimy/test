@@ -1,0 +1,19 @@
+block product
+    mixin product(src,srcWebp,price,priceOld,href,title,discount)
+        li.product
+            span.product__like
+                svg(width="24px" height="24px")
+                    use(xlink:href="/img/sprite.svg#like")
+            picture
+                source(srcset= srcWebp)
+                img.product__img(src= src, alt= title)
+            .product__price-container
+                if discount == 'discount'
+                    span.product__price.product__price--discount= price
+                    span.product__price.product__price--current= priceOld
+                else
+                    span.product__price= price
+            a.product__title(href= href)= title
+            block buy-block
+                include buy-block
+

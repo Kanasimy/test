@@ -1,0 +1,93 @@
+.product {
+  position: relative;
+  text-align: center;
+  padding: 25px 0;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+
+  picture {
+    flex-grow: 1;
+  }
+
+  &__img {
+    margin: auto;
+  }
+
+  &__like {
+    position: absolute;
+    top: 25px;
+    right: 15px;
+    stroke: #525252;
+    fill: none;
+    cursor: pointer;
+
+    &:hover, &.active {
+      stroke: $price-discount;
+    }
+  }
+
+  &__title {
+    color: $text-default;
+    text-align: left;
+    display: block;
+    margin: 10px 0 30px;
+  }
+
+  &__price-container {
+    text-align: left;
+    margin-top: 40px;
+  }
+
+  &__price {
+    color: $price-color;
+    font-weight: 500;
+    font-size: 20px;
+
+    &--current {
+      color: $price-old;
+      font-size: 16px;
+      position: relative;
+
+      &::after {
+        content: "";
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 50%;
+        color: $price-discount;
+        width: 100%;
+        height: 0;
+        border-bottom: 1px solid $price-discount;
+        transform: rotate(-15deg);
+      }
+    }
+
+    &--discount {
+      color: $price-discount;
+      margin-right: 10px;
+    }
+  }
+}
+
+.product:hover {
+  &__title {
+    color: $text-hover;
+  }
+}
+
+@media (min-width: $tablet-width) {
+  .product__list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 45px;
+  }
+}
+
+@media (min-width: $desctop-width) {
+  .product__list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 45px;
+  }
+}
